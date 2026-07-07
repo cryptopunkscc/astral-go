@@ -1,6 +1,7 @@
 package pub
 
-// This file includes the public wire types of all api packages.
+// This file includes the public wire types of the SDK: the astral primitives
+// and all api packages.
 
 import (
 	_ "github.com/cryptopunkscc/astral-go/api/apphost"
@@ -10,4 +11,6 @@ import (
 	_ "github.com/cryptopunkscc/astral-go/api/objects"
 	_ "github.com/cryptopunkscc/astral-go/api/tree"
 	_ "github.com/cryptopunkscc/astral-go/api/user"
+	_ "github.com/cryptopunkscc/astral-go/astral"
+	_ "github.com/cryptopunkscc/astral-go/astral/log"
 )
