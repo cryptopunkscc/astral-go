@@ -16,7 +16,8 @@
 - `astral/` - primitives, codecs, blueprints; `log` nested.
 - `sig/`, `streams/` - dependency-free utilities: signal-driven concurrency,
   stream helpers. They import nothing from this module.
-- `api/<p>/` - one protocol: wire types + op constants; `client/` is its RPC client.
+- `api/<p>/` - one protocol: wire types + op constants; `client/`, where
+  present, is its RPC client.
 - `lib/` - app libraries: `apphost` (session), `apps` (serving),
   `astrald` (node client), `ipc`, `query`, `routing`.
 - `pub.go` - the root registration aggregator; a blank import of

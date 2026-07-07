@@ -9,8 +9,9 @@ types and clients under `api/`, and the app libraries under `lib/`.
 go get github.com/cryptopunkscc/astral-go
 ```
 
-Requires Go 1.25. Talking to the network requires a running astrald node:
-the SDK dials `tcp:127.0.0.1:8625` and reads the access token from
+Requires Go 1.25. Talking to the network requires a running
+[astrald](https://github.com/cryptopunkscc/astrald) node: the SDK dials
+`tcp:127.0.0.1:8625` and reads the access token from
 `ASTRALD_APPHOST_TOKEN`.
 
 ## Send a query
@@ -89,15 +90,15 @@ blocks until the context ends.
   `Blueprints`, `Query`, `Context`; subpackages `channel` (typed object
   streams over any bytestream), `fmt`, `log`.
 - `api/<p>/` — one package per protocol: wire types and op-name constants;
-  `client/` is the protocol's RPC client.
+  `client/`, where present, is the protocol's RPC client.
 - `lib/` — app libraries: `astrald` (the outbound client), `apps` (serving),
   `apphost` (the node session under `astrald`), `routing` (op dispatch),
   `query` (query strings), `ipc` (local transport).
 - `sig/`, `streams/` — dependency-free utilities: signal-driven concurrency,
   stream helpers.
 - `pub.go` — the registration aggregator: a blank import of
-  `github.com/cryptopunkscc/astral-go` registers every public wire type, so
-  `astral.Decode` materializes any SDK object by type name.
+  `github.com/cryptopunkscc/astral-go` registers the astral primitives and
+  every `api/` wire type, so `astral.Decode` materializes them by type name.
 
 ## The spec
 
