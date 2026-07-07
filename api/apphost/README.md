@@ -1,5 +1,11 @@
 # apphost
 
-This module provides on-device APIs for apps to access the astral network.
+Wire types and op-name constants for the `apphost` protocol — on-device APIs
+that let local apps access the astral network via the node; `client/` is the
+protocol's RPC client.
 
-* [Protocol spec](protocol.md)
+The protocol spec lives in the pinned docs under `.ai/system`:
+
+* `.ai/system/protocols/apphost/` — protocol overview and op specs
+* `.ai/system/topics/astral-ipc.md` — the IPC wire protocol
+* `.ai/system/topics/ws-transport.md` — the WebSocket transport
