@@ -7,7 +7,7 @@ import (
 	"github.com/cryptopunkscc/astral-go/astral/sig"
 	"github.com/cryptopunkscc/astral-go/lib/query"
 
-	_ "github.com/cryptopunkscc/astral-go/pub"
+	_ "github.com/cryptopunkscc/astral-go"
 )
 
 // Describe streams descriptors on the returned channel until EOS, then closes it.

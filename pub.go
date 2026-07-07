@@ -1,4 +1,4 @@
-package pub
+package astralgo
 
 // This file includes the public wire types of the SDK: the astral primitives
 // and all api packages.
