@@ -84,6 +84,16 @@ snake_case ops and mounts a `.spec` manifest op. `apps.Serve` opens a local
 IPC listener, keeps the app registered with the node across reconnects, and
 blocks until the context ends.
 
+## Examples
+
+Runnable programs under [`examples/`](examples/), one concept each:
+
+- `hello-serve` / `hello-query` — an op-serving app and its caller; run both
+  with the same `ASTRALD_APPHOST_TOKEN`.
+- `objects-store` — store an object, read it back by ID.
+- `custom-wire-type` — define, register, and exchange a wire type over an
+  in-process pipe; runs without a node.
+
 ## Layout
 
 - `astral/` — the object model: `Object`, `Identity`, `ObjectID`,

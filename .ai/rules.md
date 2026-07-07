@@ -23,13 +23,16 @@
 - `pub.go` - the root registration aggregator; a blank import of
   `github.com/cryptopunkscc/astral-go` registers the full wire surface.
   Extend it when a new package registers blueprints.
+- `examples/` - runnable app-developer programs, one concept each; every
+  example builds with the module.
 
 ## Wire Types
 
 - Every type defining `ObjectType() string` registers with `astral.Add(&T{})`
   in its defining file.
-- Use `astral.Objectify` for `WriteTo`/`ReadFrom`. Objectify fields must be
-  astral primitives; plain Go fields are not handled.
+- Use `astral.Objectify` for `WriteTo`/`ReadFrom`. Prefer astral primitives
+  for Objectify fields; platform-width `int`/`uint` are rejected — use sized
+  types.
 - Streaming ops end with `ch.Send(&astral.EOS{})`.
 - Send stream errors with `ch.Send(astral.Err(err))`.
 - Every `objects.Writer` must `Commit()` or `Discard()`.
