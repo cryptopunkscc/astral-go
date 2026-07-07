@@ -8,7 +8,7 @@ import (
 	"sync/atomic"
 
 	"github.com/cryptopunkscc/astral-go/astral"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 type Printer struct {

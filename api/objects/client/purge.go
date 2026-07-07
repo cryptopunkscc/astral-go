@@ -4,8 +4,8 @@ import (
 	"github.com/cryptopunkscc/astral-go/api/objects"
 	"github.com/cryptopunkscc/astral-go/astral"
 	"github.com/cryptopunkscc/astral-go/astral/channel"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
 	"github.com/cryptopunkscc/astral-go/lib/query"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 // Purge streams the IDs of purged objects until EOS, then closes the channel.

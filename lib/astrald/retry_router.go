@@ -4,8 +4,8 @@ import (
 	"errors"
 
 	"github.com/cryptopunkscc/astral-go/astral"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
 	libapphost "github.com/cryptopunkscc/astral-go/lib/apphost"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 // RetryRouter wraps a Router and retries queries that fail with ErrNodeUnavailable,

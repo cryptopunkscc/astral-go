@@ -7,7 +7,7 @@ import (
 	"sync"
 
 	"github.com/cryptopunkscc/astral-go/astral"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 // Channel is a bidirectional stream of astral objects.

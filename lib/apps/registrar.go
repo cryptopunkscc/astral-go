@@ -5,8 +5,8 @@ import (
 	apphostclient "github.com/cryptopunkscc/astral-go/api/apphost/client"
 	"github.com/cryptopunkscc/astral-go/astral"
 	"github.com/cryptopunkscc/astral-go/astral/channel"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
 	libastrald "github.com/cryptopunkscc/astral-go/lib/astrald"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 // Registrar registers an IPC endpoint with the node.

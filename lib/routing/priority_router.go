@@ -6,8 +6,8 @@ import (
 	"io"
 
 	"github.com/cryptopunkscc/astral-go/astral"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
 	"github.com/cryptopunkscc/astral-go/lib/query"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 var _ astral.Router = &PriorityRouter{}

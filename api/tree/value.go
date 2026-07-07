@@ -8,7 +8,7 @@ import (
 	"sync"
 
 	"github.com/cryptopunkscc/astral-go/astral"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 // Value wraps an astral.Object type with type-safe access.
