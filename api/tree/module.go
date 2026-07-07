@@ -16,8 +16,6 @@ path in the tree.
 */
 package tree
 
-const ModuleName = "tree"
-
 const (
 	MethodGet         = "tree.get"
 	MethodSet         = "tree.set"

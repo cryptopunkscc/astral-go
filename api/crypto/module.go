@@ -3,8 +3,6 @@ Package crypto provides a module with cryptographic operations and objects.
 */
 package crypto
 
-const ModuleName = "crypto"
-
 const (
 	MethodPublicKey           = "crypto.public_key"
 	MethodSignHash            = "crypto.sign_hash"

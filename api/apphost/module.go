@@ -4,8 +4,6 @@ import (
 	"errors"
 )
 
-const ModuleName = "apphost"
-
 const (
 	MethodCreateToken     = "apphost.create_token"
 	MethodListTokens      = "apphost.list_tokens"

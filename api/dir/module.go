@@ -4,8 +4,6 @@ import (
 	"github.com/cryptopunkscc/astral-go/astral"
 )
 
-const ModuleName = "dir"
-
 const (
 	MethodAliasMap     = "dir.alias_map"
 	MethodApplyFilters = "dir.apply_filters"

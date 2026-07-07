@@ -1,7 +1,5 @@
 package user
 
-const ModuleName = "user"
-
 const (
 	OpSyncAssets        = "user.sync_assets"
 	OpInfo              = "user.info"
