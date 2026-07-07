@@ -11,7 +11,7 @@ import (
 	"github.com/cryptopunkscc/astral-go/api/tor"
 	"github.com/cryptopunkscc/astral-go/api/utp"
 	"github.com/cryptopunkscc/astral-go/astral"
-	"github.com/cryptopunkscc/astral-go/astral/streams"
+	"github.com/cryptopunkscc/astral-go/streams"
 	"github.com/jxskiss/base62"
 )
 

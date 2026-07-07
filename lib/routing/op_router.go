@@ -8,8 +8,8 @@ import (
 
 	"github.com/cryptopunkscc/astral-go/astral"
 	"github.com/cryptopunkscc/astral-go/astral/log"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
 	"github.com/cryptopunkscc/astral-go/lib/query"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 // OpRouter dispatches incoming queries by matching the first path segment of

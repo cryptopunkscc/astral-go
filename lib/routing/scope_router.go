@@ -6,8 +6,8 @@ import (
 	"strings"
 
 	"github.com/cryptopunkscc/astral-go/astral"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
 	"github.com/cryptopunkscc/astral-go/lib/query"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 // ScopeRouter dispatches queries whose first path segment matches a registered

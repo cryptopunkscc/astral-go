@@ -1,7 +1,7 @@
 package astral
 
 import (
-	"github.com/cryptopunkscc/astral-go/astral/sig"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 const OriginNetwork = "network"

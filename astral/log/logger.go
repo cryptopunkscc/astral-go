@@ -8,7 +8,7 @@ import (
 
 	"github.com/cryptopunkscc/astral-go/astral"
 	"github.com/cryptopunkscc/astral-go/astral/fmt"
-	"github.com/cryptopunkscc/astral-go/astral/sig"
+	"github.com/cryptopunkscc/astral-go/sig"
 )
 
 // Logger writes log entries. Child loggers created via SetPrefix/Tag share the
