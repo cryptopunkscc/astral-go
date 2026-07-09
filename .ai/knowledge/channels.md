@@ -5,7 +5,7 @@ A `Channel` (`astral/channel`) carries typed `Object` values over a raw stream.
 * Choose the encoding when constructing the channel: `bin` (the default),
   `json`, `text`, or `canonical`; senders also accept `base64` and `render`.
   Encoding semantics are specified in
-  [channel](../../system/core-definitions/channel.md).
+  [channel](../system/core-definitions/channel.md).
 * `EOS` marks the end of the stream.
 * Receive loops stop on transport `io.EOF`, an error, or a helper condition.
 

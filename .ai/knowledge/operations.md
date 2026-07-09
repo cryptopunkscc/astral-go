@@ -2,8 +2,8 @@
 
 An Op is a named service invoked by a Query method string. Protocol meaning —
 op names, parameters, modes — is specified in
-[op](../../system/core-definitions/op.md) and
-[op-modes](../../system/topics/op-modes.md). This note covers the handler
+[op](../system/core-definitions/op.md) and
+[op-modes](../system/topics/op-modes.md). This note covers the handler
 framework in `lib/routing` and `lib/query`.
 
 ## Handlers
@@ -24,7 +24,7 @@ framework in `lib/routing` and `lib/query`.
 ## Args Structs
 
 * `query.Parse` splits the query string into a path and a `map[string]string`
-  of params ([query-string](../../system/core-definitions/query-string.md)).
+  of params ([query-string](../system/core-definitions/query-string.md)).
 * Params fill the args struct by field name; exported names convert
   PascalCase to snake_case (`lib/query/editor.go`).
 * Values decode via `encoding.TextUnmarshaler` when implemented, else by

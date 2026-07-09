@@ -2,9 +2,9 @@
 
 astral-go realizes the object codec through reflection. The wire framings —
 binary, canonical, JSON, text — are specified by the spec
-([codec](../../system/topics/codec.md),
-[json-encoding](../../system/topics/json-encoding.md),
-[text-encoding](../../system/topics/text-encoding.md)); a stable `ObjectID`
+([codec](../system/topics/codec.md),
+[json-encoding](../system/topics/json-encoding.md),
+[text-encoding](../system/topics/text-encoding.md)); a stable `ObjectID`
 comes only from the canonical form. This note covers how the Go reflector
 turns a struct into those framings.
 
@@ -13,7 +13,7 @@ turns a struct into those framings.
 `astral.Objectify(&v)` (`astral/objectify.go`) reflects a non-nil pointer into
 binary, JSON, and a derived `ObjectType()`. The reflector reads and writes
 struct fields in declaration order (binary encoding is positional — see
-[structure](../../system/core-definitions/structure.md)).
+[structure](../system/core-definitions/structure.md)).
 
 Supported kinds:
 

@@ -1,7 +1,7 @@
 # Routing Patterns
 
 Use when implementing `astral.Router`. The Router interface and in-flight
-queries are described in [query](../knowledge/concepts/query.md); node-side
+queries are described in [query](../knowledge/query.md); node-side
 zone gating is astrald's routing pattern.
 
 ## RouteQuery Return Values

@@ -14,8 +14,8 @@
 ## Context Discipline
 
 - Implementation notes go in `.ai/knowledge/`; recipes in `.ai/patterns/`.
-- Every note gets a keyword row in its tree's README index.
-- Use indexes before loading scoped files.
+- Every note gets a keyword row in the index in `.ai/README.md`.
+- Use the index before loading scoped files.
 - Correct stale `.ai` context when found.
 
 ## Layout

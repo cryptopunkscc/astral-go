@@ -54,4 +54,4 @@ func (n *Note) UnmarshalJSON(b []byte) error { return astral.Objectify(n).Unmars
 
 Source: `api/objects/probe.go`
 
-Field type reference: `.ai/knowledge/concepts/wire.md`.
+Field type reference: `.ai/knowledge/wire.md`.

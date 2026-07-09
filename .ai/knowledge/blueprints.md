@@ -3,7 +3,7 @@
 The `Blueprints` registry (`astral/blueprints.go`) maps object type names to
 prototypes so decoders can materialize objects by name. Kinds, field specs,
 name rules, and limits are specified in
-[blueprints](../../system/topics/blueprints.md).
+[blueprints](../system/topics/blueprints.md).
 
 ## Registry
 
@@ -64,5 +64,5 @@ name rules, and limits are specified in
   error; the client wrapper (`api/objects/client/register.go`) restores the
   sentinel so `errors.Is(err, astral.ErrAlreadyRegistered)` works.
 * Op semantics:
-  [objects.blueprints](../../system/protocols/objects/ops/objects.blueprints.md),
-  [objects.register_blueprint](../../system/protocols/objects/ops/objects.register_blueprint.md).
+  [objects.blueprints](../system/protocols/objects/ops/objects.blueprints.md),
+  [objects.register_blueprint](../system/protocols/objects/ops/objects.register_blueprint.md).

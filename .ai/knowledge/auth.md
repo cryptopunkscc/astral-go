@@ -8,7 +8,7 @@ astrald mod/auth.
 ## Actions
 
 * Actions are typed objects embedding `auth.Action` (`Nonce` + `ActorID`):
-  see [mod.auth.action](../../system/protocols/auth/types/mod.auth.action.md).
+  see [mod.auth.action](../system/protocols/auth/types/mod.auth.action.md).
 * The actor lives inside the action object, not as a separate argument:
   `Actor() *Identity`, `SetActor(*Identity)`.
 * `NewAction(actor)` returns an `Action` with a fresh nonce.
@@ -27,7 +27,7 @@ astrald mod/auth.
 `Contract` (`api/auth/contract.go`):
 
 * Fields and grant semantics: see
-  [mod.auth.contract](../../system/protocols/auth/types/mod.auth.contract.md).
+  [mod.auth.contract](../system/protocols/auth/types/mod.auth.contract.md).
 * Implements `crypto.SignableTextObject`: `SignableHash` is the contract's
   `ObjectID.Hash`; `SignableText` is the human-readable grant string.
 * `HasPermit(actionType)` returns all permits matching the action type; empty
@@ -37,7 +37,7 @@ astrald mod/auth.
 
 * `Action` (`String8` action object type) and optional `Constraints`
   (`*astral.Bundle`): see
-  [mod.auth.permit](../../system/protocols/auth/types/mod.auth.permit.md).
+  [mod.auth.permit](../system/protocols/auth/types/mod.auth.permit.md).
 * `Delegation` (`astral.Uint8`) is the number of hops allowed below a link
   carrying this permit; 0 = non-delegable. The field is not yet in the permit
   spec page.
@@ -48,7 +48,7 @@ astrald mod/auth.
 
 * Wraps `*Contract` with `IssuerSig` and `SubjectSig` (`*crypto.Signature`);
   either may be nil before the signing step completes. Fields: see
-  [mod.auth.signed_contract](../../system/protocols/auth/types/mod.auth.signed_contract.md).
+  [mod.auth.signed_contract](../system/protocols/auth/types/mod.auth.signed_contract.md).
 * `IsNil()` is true for a nil receiver or an embedded nil `*Contract`.
 
 ## Sentinels And Ops

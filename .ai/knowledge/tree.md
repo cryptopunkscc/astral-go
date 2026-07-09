@@ -3,7 +3,7 @@
 `tree.Value[T]` (`api/tree/value.go`) is a typed, observable cell bound to a
 node of a tree store. The store itself (paths, mounts, the default DB-backed
 node) is served by astrald mod/tree; the network ops are specified in
-[protocols/tree](../../system/protocols/tree/README.md).
+[protocols/tree](../system/protocols/tree/README.md).
 
 ## Binding
 
