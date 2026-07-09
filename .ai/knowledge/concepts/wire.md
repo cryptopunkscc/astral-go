@@ -1,20 +1,12 @@
 # Wire
 
-## Encodings
-
-| Format    | Framing                                     | Used for                  |
-|-----------|---------------------------------------------|---------------------------|
-| binary    | `String8(type)` + `Bytes32(payload)`        | default channel transport |
-| json      | `{"Type":"...","Object":{...}}\n`           | debugging, CLI tooling    |
-| text      | `#[type] value\n` or `#[type]:base64\n`     | human-readable output     |
-| canonical | `Stamp(4b)` + `String8(type)` + raw payload | storage, ObjectID hashing |
-
-Invariant: only canonical encoding produces a stable `ObjectID`. Do not use
-binary framing for storage.
-
-The spec defines the framings: [codec](../../system/topics/codec.md) (binary
-and canonical), [json-encoding](../../system/topics/json-encoding.md),
-[text-encoding](../../system/topics/text-encoding.md).
+astral-go realizes the object codec through reflection. The wire framings —
+binary, canonical, JSON, text — are specified by the spec
+([codec](../../system/topics/codec.md),
+[json-encoding](../../system/topics/json-encoding.md),
+[text-encoding](../../system/topics/text-encoding.md)); a stable `ObjectID`
+comes only from the canonical form. This note covers how the Go reflector
+turns a struct into those framings.
 
 ## Objectify Fields
 

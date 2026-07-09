@@ -1,17 +1,10 @@
 # Query
 
 A Query requests a bidirectional session with a named operation on a target
-Identity. Network semantics — accept, reject codes, the resulting Channel —
-are specified in [query](../../system/core-definitions/query.md). This note
-covers the Go types in `astral/`.
-
-## Wire Object
-
-* `Query{Nonce, Caller, Target, QueryString}` is the wire object
-  (`astral/query.go`); its object type is `query`.
-* `NewQuery(caller, target, query)` fills a random `Nonce`.
-* The `QueryString` format is specified in
-  [query-string](../../system/core-definitions/query-string.md).
+Identity. The `Query` wire object and its semantics — accept, reject codes,
+the resulting Channel — are specified in
+[query](../../system/core-definitions/query.md). This note covers the Go
+routing types in `astral/` (`NewQuery` builds a `Query` with a random nonce).
 
 ## In-Flight Queries
 

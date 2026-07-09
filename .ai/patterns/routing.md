@@ -2,8 +2,7 @@
 
 Use when implementing `astral.Router`. The Router interface and in-flight
 queries are described in [query](../knowledge/concepts/query.md); node-side
-zone gating is astrald's routing pattern, the zone API itself is in
-[zone](../knowledge/concepts/zone.md).
+zone gating is astrald's routing pattern.
 
 ## RouteQuery Return Values
 

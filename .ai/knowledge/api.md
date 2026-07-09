@@ -1,9 +1,9 @@
 # api
 
 Conventions of the `api/` tree — the per-protocol wire surface — and the
-`pub.go` registration aggregator. Per-protocol details live in
-`knowledge/api/<p>.md`; node-side `Module` interfaces and op implementations
-are astrald mod/<p>.
+`pub.go` registration aggregator. Per-protocol wire types and op semantics
+live in the astral-docs spec (`.ai/system/protocols/<p>/`); node-side
+`Module` interfaces and op implementations are astrald mod/<p>.
 
 ## Package shape
 
