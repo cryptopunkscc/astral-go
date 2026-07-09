@@ -12,8 +12,11 @@ This module imports neither.
 1. `.ai/README.md`
 2. `.ai/rules.md`
 
-Then use `.ai/system/` for domain and protocol truth. Load scoped files only
-when relevant.
+Then use indexes. Load scoped files only when relevant:
+
+- `.ai/knowledge/README.md` - repo implementation
+- `.ai/patterns/README.md` - code recipes
+- `.ai/system/` - domain/protocol truth
 
 ## Authority
 
@@ -21,6 +24,8 @@ when relevant.
 2. Code/tests
 3. `.ai/system/` (the astral-docs spec, pinned as a submodule)
 4. `.ai/rules.md`
+5. `.ai/knowledge/`
+6. `.ai/patterns/`
 
 Call out conflicts.
 
@@ -28,4 +33,6 @@ Call out conflicts.
 
 - `README.md` - this file: orientation and load order
 - `rules.md` - compact always-on rules
+- `knowledge/` - repo implementation notes
+- `patterns/` - source-grounded recipes
 - `system/` - domain/protocol truth (astral-docs at a pinned commit)

@@ -1,86 +1,50 @@
 # astral
 
-This package documents and implements core astral components.
+The Go implementation of the astral object model: object types, codecs, and
+the type registry. Network definitions and encodings live in the protocol
+spec (see [Spec](#spec)); this package implements them.
 
-## Definitions
+## Object Model
 
-### object
+- `Object` - the core interface: `ObjectType() string` plus
+  `WriteTo`/`ReadFrom` for the payload (the type is outside the payload).
+- `ObjectID` - `Size uint64` + 32-byte SHA-256 `Hash`; parses and renders the
+  `data1` z-base32 text form.
+- `Identity` - a secp256k1 public key; the zero value `Anyone` parses from
+  `"anyone"` or the all-zero key.
+- `Query` - `Nonce`, `Caller`, `Target`, `QueryString`.
+- `Context` - wraps `context.Context` with identity, zone, and filters.
+- `Blueprints` - the type registry; `New(typeName)` materializes a zero-value
+  object of a registered type.
 
-An object is a [payload](#payload) with an optional [type](#type).
-An object without a type is called an [anonymous object](#anonymous-object).
-All objects are immutable and have a [canonical form](#canonical-form).
+## Codecs
 
-### payload
+- `Objectify(&v)` builds the binary and JSON codecs for a struct through
+  reflection, encoding fields in declaration order.
+- Sized primitives carry explicit wire widths: `Int8`…`Int64`,
+  `Uint8`…`Uint64`, `Float32`/`Float64`, `String8`…`String64`,
+  `Bytes8`…`Bytes64`; plus `Bool`, `Time`, `Duration`, `Nonce`, `Nil`,
+  `EOS`, `Ack`.
+- `Adapt(v)` wraps a native Go value in its equivalent `Object`.
 
-Any binary data.
+## Registration
 
-### type
+- Every wire type registers its prototype with `astral.Add(&T{})` in its
+  defining file.
+- A blank import of `github.com/cryptopunkscc/astral-go` (package `pub`)
+  registers the full wire surface: the astral primitives, `astral/log`, and
+  all `api/` packages.
 
-A type is a non-empty string of up to 255 characters. A type is used to convey
-how to interpret the data in the payload. Allowed characters are alphanumeric,
-period, hyphen and underscore.
+## Subpackages
 
-### implicit typing
+- `channel` - typed object channels over byte streams; binary, JSON, text,
+  and render formats. See [channel/README.md](channel/README.md).
+- `fmt` - object formatting: `Format` renders format arguments as astral
+  objects; `Printer` writes them through registered views.
+- `log` - object-based logger; `styles`, `theme`, and `views` nested.
 
-If the object type can be unambiguously inferred from the context, its payload
-is enough to correctly interpret its content, and its type and does not need
-to be explicitly stated.
+## Spec
 
-### object id
-
-An object id is an uint64 representing the size of the object in bytes
-followed by SHA256 hash of the [canonical form](#canonical-form) of the object.
-In effect, object id is a 320-bit value uniquely identifying an object. Object
-id is itself an object of type `astral.object_id.sha256`.
-
-### anonymous object
-
-An anonymous object is an object that has no type. Any binary data can be
-treated as an anonymous object. Anonymous objects can still be correctly
-interpreted if they can be implicitly typed and their structure can be
-inferred from the context.
-
-### canonical form
-
-A canonical form of an object is its header followed by its payload.
-
-### header
-
-A binary representation of a [type](#type). If an object has no [type](#type),
-the header is empty and has zero length. Otherwise, the header consists of the
-magic bytes, followed by an uint8 specifying type length, followed by the type
-encoded as an ASCII string. The header itself is an object with a type of
-`astral.object_header`.
-
-### short object header
-
-An object header without the magic bytes.
-
-### magic bytes
-
-A const uint32 value equal to `0x41444330`.
-
-### identity
-
-Identity is a secp256k1 public key serialized into a 33-byte long compressed
-format. Identity is an object of the type `astral.identity.secp256k1`.
-
-### zone
-
-A zone describes what resources need to be used to access an object or an
-identity. There are 3 zones: device, virtual and network (shortened to d, v
-and n respectively).
-
-#### device
-
-All objects stored on the local device and the pheripherals directly attached
-to it. All local identities such as the node and its guests.
-
-#### virtual
-
-Objects that are not stored in their original representation, but can be
-generated on demand (ex. extracted from a zip file).
-
-#### network
-
-Objects and identities accessbile via a network.
+- Definitions (object, object id, identity, zone, stamp):
+  [core-definitions/](../.ai/system/core-definitions/).
+- Encodings and framing: [topics/codec.md](../.ai/system/topics/codec.md).

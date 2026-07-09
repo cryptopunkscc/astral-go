@@ -11,9 +11,16 @@
   `.ai/system` first, then this module, then consumers.
 - Shared dependency versions stay pinned to astrald's (btcec, secp256k1).
 
+## Context Discipline
+
+- Implementation notes go in `.ai/knowledge/`; recipes in `.ai/patterns/`.
+- Every note gets a keyword row in its tree's README index.
+- Use indexes before loading scoped files.
+- Correct stale `.ai` context when found.
+
 ## Layout
 
-- `astral/` - primitives, codecs, blueprints; `log` nested.
+- `astral/` - primitives, codecs, blueprints; `channel`, `fmt`, `log` nested.
 - `sig/`, `streams/` - dependency-free utilities: signal-driven concurrency,
   stream helpers. They import nothing from this module.
 - `api/<p>/` - one protocol: wire types + op constants; `client/`, where
@@ -39,6 +46,12 @@
 
 ## Project APIs
 
+- Use `astral.Adapt(v)` to wrap a native Go value into an astral `Object`;
+  do not hand-roll switch ladders. Pass-through for `Object`; `nil` and
+  typed-nil pointers → `&Nil{}`; `error` → `NewError`. Default widths:
+  `int`/`uint` → `Int64`/`Uint64`, `string` → `String32`. When the spec
+  dictates a narrower width, Adapt is the wrong tool — dispatch on the
+  spec first.
 - Prefer `sig.Map`/`sig.Set`/`sig.Queue` over mutex + map/slice.
 - Use `sig.RecvErr`/`sig.Recv`/`sig.Send` for context-aware channel ops.
 - Logging: always `%v`. Levels: `Log` 0, `Logv(1)` verbose, `Logv(2)` debug.

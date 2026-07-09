@@ -24,11 +24,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cryptopunkscc/astrald/astral"
-	"github.com/cryptopunkscc/astrald/astral/channel"
-	"github.com/cryptopunkscc/astrald/lib/apps"
-	libastrald "github.com/cryptopunkscc/astrald/lib/astrald"
-	"github.com/cryptopunkscc/astrald/lib/routing"
+	"github.com/cryptopunkscc/astral-go/astral"
+	"github.com/cryptopunkscc/astral-go/astral/channel"
+	"github.com/cryptopunkscc/astral-go/lib/apps"
+	libastrald "github.com/cryptopunkscc/astral-go/lib/astrald"
+	"github.com/cryptopunkscc/astral-go/lib/routing"
 )
 
 type API struct{}
@@ -77,6 +77,8 @@ like `Serve`.
 Use these combinations for the common app shapes:
 
 ```go
+import objectsclient "github.com/cryptopunkscc/astral-go/api/objects/client"
+
 // Plain app: routes only.
 err := apps.Serve(ctx, routing.NewApp(api))
 
@@ -116,6 +118,14 @@ The snippets below use `sig.Send` and `sig.RecvOk` so finder streams unblock
 when the query context is cancelled.
 
 ```go
+import (
+	"github.com/cryptopunkscc/astral-go/astral"
+	"github.com/cryptopunkscc/astral-go/lib/apps"
+	libastrald "github.com/cryptopunkscc/astral-go/lib/astrald"
+	"github.com/cryptopunkscc/astral-go/lib/routing"
+	"github.com/cryptopunkscc/astral-go/sig"
+)
+
 // App carries any regular routing ops. Left empty here for brevity.
 type App struct{}
 
@@ -178,6 +188,17 @@ is left to the node-side `objects.search` op, which already dedupes across
 all searchers.
 
 ```go
+import (
+    "strings"
+
+    "github.com/cryptopunkscc/astral-go/api/objects"
+    "github.com/cryptopunkscc/astral-go/astral"
+    "github.com/cryptopunkscc/astral-go/lib/apps"
+    libastrald "github.com/cryptopunkscc/astral-go/lib/astrald"
+    "github.com/cryptopunkscc/astral-go/lib/routing"
+    "github.com/cryptopunkscc/astral-go/sig"
+)
+
 type App struct{}
 
 // MySearcher is a separate value that implements objects.Searcher.
@@ -235,6 +256,15 @@ request across every configured describer and forwards each non-empty
 descriptor.
 
 ```go
+import (
+    "github.com/cryptopunkscc/astral-go/api/objects"
+    "github.com/cryptopunkscc/astral-go/astral"
+    "github.com/cryptopunkscc/astral-go/lib/apps"
+    libastrald "github.com/cryptopunkscc/astral-go/lib/astrald"
+    "github.com/cryptopunkscc/astral-go/lib/routing"
+    "github.com/cryptopunkscc/astral-go/sig"
+)
+
 type App struct{}
 
 // MyDescriber is a separate value that implements objects.Describer.
@@ -296,8 +326,19 @@ below shows the Finder shape; Searcher and Describer follow the same
 pattern.
 
 ```go
+import (
+	objectsclient "github.com/cryptopunkscc/astral-go/api/objects/client"
+	"github.com/cryptopunkscc/astral-go/astral"
+	"github.com/cryptopunkscc/astral-go/astral/channel"
+	"github.com/cryptopunkscc/astral-go/lib/apps"
+	libastrald "github.com/cryptopunkscc/astral-go/lib/astrald"
+	"github.com/cryptopunkscc/astral-go/lib/routing"
+	"github.com/cryptopunkscc/astral-go/sig"
+)
+
+// MyFinder and App are the types from the objects.find section above.
 type objectOps struct {
-	finder *API
+	finder *MyFinder
 }
 
 type findArgs struct {
@@ -339,7 +380,7 @@ func (ops *objectOps) Find(ctx *astral.Context, q *routing.IncomingQuery, args f
 }
 
 func main() {
-	finder := &API{ids: map[string]struct{}{"2e56f...": {}}}
+	finder := &MyFinder{ids: map[string]struct{}{"2e56f...": {}}}
 
 	app := routing.NewApp(&API{})
 	app.Add("objects", &objectOps{finder: finder})
@@ -372,6 +413,13 @@ them for registrations the node persists in its own state (for example
 indexers); those survive reconnects without replay.
 
 ```go
+import (
+	objectsclient "github.com/cryptopunkscc/astral-go/api/objects/client"
+	"github.com/cryptopunkscc/astral-go/lib/apps"
+	libastrald "github.com/cryptopunkscc/astral-go/lib/astrald"
+	"github.com/cryptopunkscc/astral-go/lib/routing"
+)
+
 func main() {
 	app := routing.NewApp(&API{})
 

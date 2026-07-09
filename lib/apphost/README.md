@@ -1,17 +1,29 @@
 # apphost
 
-Client library for the [apphost](../../mod/apphost/README.md) module.
+Client library for the node's apphost service. Protocol spec:
+[astral-docs/protocols/apphost](https://github.com/cryptopunkscc/astral-docs/tree/master/protocols/apphost).
 
 ## Basic usage
 
 ```go
-host := apphost.Connect(apphost.DefaultEndpoint)
+ctx := astral.NewContext(nil)
 
-fmt.Println("connected to host %v (%v)", host.HostAlias(), host.HostID())
+host, err := apphost.Connect(ctx, apphost.DefaultEndpoint)
+if err != nil {
+	return err
+}
 
-err := host.AuthToken(token)
+fmt.Printf("connected to host %v (%v)\n", host.HostAlias(), host.HostID())
 
-fmt.Println("authenticated as %v", host.GuestID())
+if err := host.AuthToken(token); err != nil {
+	return err
+}
 
-conn, err := host.RouteQuery(query.New(nil, nil, "user.info", nil)
+fmt.Printf("authenticated as %v\n", host.GuestID())
+
+conn, err := host.RouteQuery(
+	astral.Launch(query.New(nil, nil, "user.info", nil)),
+	ctx.Zone(),
+	nil,
+)
 ```
