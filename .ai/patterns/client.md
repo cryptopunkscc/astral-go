@@ -2,8 +2,7 @@
 
 Recipes for writing protocol clients under `api/<p>/client/`. The handler
 framework — signatures, args structs, query tags, registration — is covered
-in [operations](../knowledge/operations.md); the `api/` tree
-conventions in [api](../knowledge/api.md).
+in [operations](../knowledge/operations.md).
 
 ## Module Client
 

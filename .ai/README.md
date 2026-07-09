@@ -32,17 +32,11 @@ Call out conflicts.
 
 | Keywords | Read |
 |---|---|
-| Query, InFlightQuery, Launch, Extra, OriginLocal, OriginNetwork, Router, RouteQuery, ErrRouteNotFound, HasRoutingPriority, PriorityRouter | `knowledge/query.md` |
-| Auth, Action, ActionObject, NewAction, Constrainable, Contract, Permit, SignedContract, HasPermit, Allows, Delegation, MethodSignContract, ErrContractExpired | `knowledge/auth.md` |
-| lib/astrald, lib/apphost, lib/ipc, lib/routing, lib/apps, lib/query, QueryChannel, WithTarget, OpRouter, ScopeRouter, PriorityRouter, IncomingQuery, Serve, AppRegistrar, client library | `knowledge/lib.md` |
-| Op, op handler, routing.NewOp, handler signature, args struct, query.Parse, query tag, required, key, skip, AddOp, AddStructPrefix, Spec, snake_case, ErrInvalidSignature | `knowledge/operations.md` |
-| Channel, Switch, Collect, Handle, EOS, channel.Expect, ExpectAck, PassErrors, BreakOnEOS, WithContext, WithTimeout, WithLockedWrites, astral.Err, encoding bin json text canonical | `knowledge/channels.md` |
-| Serialization, wire format, Objectify, ObjectType, canonical encoding, binary framing, Stamp, ObjectID hashing, supported field kinds, Stringify, astral primitives | `knowledge/wire.md` |
-| tree.Value, typed cell, Bind, BindPath, Get, Follow, Set, Clear, NoLocal, astral.Nil, live binding | `knowledge/tree.md` |
+| Serialization, wire format, Objectify, ObjectType, canonical encoding, binary framing, Stamp, ObjectID hashing, supported field kinds, Stringify | `knowledge/wire.md` |
 | Blueprints, Blueprint, astral.Add, astral.Register, RegisterBlueprint, astral.New, PrimitiveAlias, BlueprintOf, RuntimeObject, OrderedBlueprints, AllBlueprints, SyncBlueprints, WithBlueprintSync, ErrAlreadyRegistered | `knowledge/blueprints.md` |
-| streams/, Pipe, Join, ReadWriteCloseSplit, ContextReader, LimitedReader, Skip, ReadCounter, AsyncWriter, Dispenser, WriteCounter, ReadAllFrom, WriteAllTo | `knowledge/streams.md` |
-| astral/log, Logger, Log, Logv, Entry, Tag, SetPrefix, SetFilter, EntryLogger, ToSnakeCase, styles, theme, views | `knowledge/log.md` |
-| api/ conventions, package shape, module.go, Method* constants, client/ packages, package README, pub.go, blank import, registration aggregator | `knowledge/api.md` |
+| Channel, Switch, Collect, Handle, EOS, channel.Expect, ExpectAck, PassErrors, BreakOnEOS, WithContext, WithTimeout, WithLockedWrites, astral.Err | `knowledge/channels.md` |
+| Op, op handler, routing.NewOp, handler signature, args struct, query.Parse, query tag, required, key, skip, AddOp, AddStructPrefix, Spec, ErrInvalidSignature | `knowledge/operations.md` |
+| Query, InFlightQuery, Launch, Extra, OriginLocal, OriginNetwork, Router, RouteQuery, ErrRouteNotFound, HasRoutingPriority, PriorityRouter | `knowledge/query.md` |
 
 Per-protocol wire types and op semantics are in the spec
 (`.ai/system/protocols/<p>/`, pointed at by each `api/<p>/README.md`); the
