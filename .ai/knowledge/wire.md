@@ -5,8 +5,8 @@ binary, canonical, JSON, text — are specified by the spec
 ([codec](../system/topics/codec.md),
 [json-encoding](../system/topics/json-encoding.md),
 [text-encoding](../system/topics/text-encoding.md)); a stable `ObjectID`
-comes only from the canonical form. This note covers how the Go reflector
-turns a struct into those framings.
+comes only from the canonical form. The Go reflector turns a struct into
+those framings.
 
 ## Objectify Fields
 

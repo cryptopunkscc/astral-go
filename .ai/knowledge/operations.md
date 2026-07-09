@@ -1,10 +1,10 @@
 # Operations
 
-An Op is a named service invoked by a Query method string. Protocol meaning —
+An `Op` is a named service invoked by a `Query` method string. Its meaning —
 op names, parameters, modes — is specified in
 [op](../system/core-definitions/op.md) and
-[op-modes](../system/topics/op-modes.md). This note covers the handler
-framework in `lib/routing` and `lib/query`.
+[op-modes](../system/topics/op-modes.md). The handler framework lives in
+`lib/routing` and `lib/query`.
 
 ## Handlers
 

@@ -10,9 +10,9 @@ conventions in [api](../knowledge/api.md).
 A protocol's client package lives at `api/<p>/client/`, one exported method
 per op, mirroring the node module's `src/op_*.go` handlers in astrald.
 
-- The package declares the protocol's name (`package nat` in
+* The package declares the protocol's name (`package nat` in
   `api/nat/client/`), so importers alias it, e.g. `natclient`.
-- Methods invoke the `Method*` op-name constants from the api package root
+* Methods invoke the `Method*` op-name constants from the api package root
   (e.g. `objects.MethodStore`).
 
 ```go
@@ -46,10 +46,10 @@ func (client *Client) queryCh(ctx *astral.Context, method string, args any, cfg 
 }
 ```
 
-- A nil `targetID` routes to the local node; a nil `*astrald.Client` falls
+* A nil `targetID` routes to the local node; a nil `*astrald.Client` falls
   back to `astrald.Default()` (routed through apphost).
-- `Default()` builds the package default lazily; `SetDefault` replaces it.
-- Every op goes through `queryCh`:
+* `Default()` builds the package default lazily; `SetDefault` replaces it.
+* Every op goes through `queryCh`:
   `WithTarget(targetID).QueryChannel(ctx, method, args, cfg...)`.
 
 Source: `api/nat/client/client.go` (same shape in `api/objects/client/client.go`,
@@ -82,9 +82,9 @@ func DoThing(ctx *astral.Context, contract *foo.Contract) (*foo.SignedContract, 
 }
 ```
 
-- Pass scalar parameters as query args (`query.Args{"repo": repo}`); send
+* Pass scalar parameters as query args (`query.Args{"repo": repo}`); send
   object payloads with `ch.Send` after the channel is established.
-- Read the result with `ch.Switch(channel.Expect(&result), channel.PassErrors)`;
+* Read the result with `ch.Switch(channel.Expect(&result), channel.PassErrors)`;
   `PassErrors` surfaces received error objects as Go errors.
 
 Source: `api/objects/client/store.go`, `api/auth/client/sign_contract.go`

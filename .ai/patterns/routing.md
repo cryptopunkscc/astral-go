@@ -32,15 +32,15 @@ func (r *MyRouter) RouteQuery(ctx *astral.Context, q *astral.InFlightQuery, w io
 | Accepted | `query.Accept(q, w, handler)` |
 | Never | `nil, nil` |
 
-- `query.RouteNotFound` and `query.Reject` take no arguments. `Reject()`
+* `query.RouteNotFound` and `query.Reject` take no arguments. `Reject()`
   rejects with `astral.DefaultRejectCode` (1); `RejectWithCode(code)` panics
   on code 0.
-- `query.Accept(q, w, handler)` runs `handler` in a new goroutine with the
+* `query.Accept(q, w, handler)` runs `handler` in a new goroutine with the
   resulting `astral.Conn`.
-- `ErrRouteNotFound` is non-terminal: composite routers (`lib/routing`
+* `ErrRouteNotFound` is non-terminal: composite routers (`lib/routing`
   `PriorityRouter`) fall through to the next router, stopping only on
   success or `ErrRejected`.
-- `ErrRouteNotFound` carries no router reference; routers identify
+* `ErrRouteNotFound` carries no router reference; routers identify
   themselves through their own `String()` or `Name` (e.g. `PriorityRouter`).
 
 Source: `astral/router.go`, `lib/query/route.go`, `astral/err_route_not_found.go`

@@ -16,7 +16,7 @@ build on them.
 
 ## Selection Rule
 
-- Caller code uses `lib/astrald` (or an `api/<protocol>/client` wrapper).
-- Handler code uses `lib/routing` (`OpRouter`, `IncomingQuery`).
-- Custom routers use `lib/query` helpers and `astral.Router`.
-- External apps use `lib/apps` (`Serve` / `ServeWith`).
+* Caller code uses `lib/astrald` (or an `api/<protocol>/client` wrapper).
+* Handler code uses `lib/routing` (`OpRouter`, `IncomingQuery`).
+* Custom routers use `lib/query` helpers and `astral.Router`.
+* External apps use `lib/apps` (`Serve` / `ServeWith`).

@@ -14,8 +14,8 @@ v, err := sig.Recv[T](ctx, ch)   // receive one value
 err = sig.Send(ctx, ch, value)   // send one value
 ```
 
-- Each helper returns `ctx.Err()` when the context ends first.
-- `sig.RecvOk` additionally reports the receive's `ok` flag.
+* Each helper returns `ctx.Err()` when the context ends first.
+* `sig.RecvOk` additionally reports the receive's `ok` flag.
 
 Source: `sig/chan.go`
 
@@ -43,10 +43,10 @@ for e := range sig.Subscribe(ctx, q) {  // consumer; ends on ctx or Close
 
 Rules:
 
-- `sig.Map.Set` never overwrites; it returns the existing value and `false`.
+* `sig.Map.Set` never overwrites; it returns the existing value and `false`.
   Use `Replace` to overwrite.
-- `sig.Set` rejects duplicates and preserves insertion order (`Clone`, `Sort`).
-- `sig.Queue` is unbounded; `Push` returns the new tail — store it back.
+* `sig.Set` rejects duplicates and preserves insertion order (`Clone`, `Sort`).
+* `sig.Queue` is unbounded; `Push` returns the new tail — store it back.
   `Close` marks EOF and ends subscriptions.
 
 Source: `sig/map.go`, `sig/set.go`, `sig/queue.go`; usage: `api/tree/value.go`,
@@ -54,11 +54,11 @@ Source: `sig/map.go`, `sig/set.go`, `sig/queue.go`; usage: `api/tree/value.go`,
 
 ## Ring And Pool
 
-- `sig.Ring[T]` is a fixed-capacity thread-safe ring buffer. Construct with
+* `sig.Ring[T]` is a fixed-capacity thread-safe ring buffer. Construct with
   `sig.NewRing(capacity)`; capacity must be positive. `Push` on a full ring
   overwrites and returns the oldest value; `Pop`/`Peek` return `false` when
   empty.
-- `sig.Pool` is a named counting semaphore. `Add(item, count)` grows an item's
+* `sig.Pool` is a named counting semaphore. `Add(item, count)` grows an item's
   capacity; `Lock(names...)` blocks until all named items are acquired
   atomically; pair every `Lock` with `Unlock`.
 
